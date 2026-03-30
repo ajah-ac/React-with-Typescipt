@@ -4,8 +4,11 @@ import './output.css'
 import App from './App.tsx'
 import {configureStore,} from '@reduxjs/toolkit'
 import {Provider} from 'react-redux'
+import TodoReducer from './features/todoSlice.ts'
 const store=configureStore({
-  reducer:{}
+  reducer:{
+    todo:TodoReducer
+  }
 })
 
 createRoot(document.getElementById('root')!).render(
