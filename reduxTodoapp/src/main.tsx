@@ -10,6 +10,7 @@ const store=configureStore({
     todo:TodoReducer
   }
 })
+export type RootState=ReturnType<typeof store.getState>;
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
-type Item={id:number,text:string,complete:boolean}
+import type {PayloadAction} from '@reduxjs/toolkit'
+export type Item={id:string,text:string,complete:boolean}
 type initialVal={items:Item[]}
 
 const initialState:initialVal={items:[]}
@@ -8,7 +9,7 @@ const todoReducer=createSlice({
     name:'todo',
     initialState,
     reducers:{
-        addtodo(state,action){
+        addtodo(state,action:PayloadAction<Item>){
             state.items.push(action.payload)
         }
 

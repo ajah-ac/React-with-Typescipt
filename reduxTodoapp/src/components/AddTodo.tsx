@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addtodo } from '../features/todoSlice'
 import { Plus } from 'lucide-react'
