@@ -9,7 +9,7 @@ type Props={
     children:React.ReactNode
 }
 function ThemeProvider({children}:Props){
-    const [theme,setTheme]=useState('light')
+    const [theme,setTheme]=useState('dark')
 function toggleTheme(){
     setTheme(prev=>prev==='light'?'dark':'light')
 
@@ -26,7 +26,6 @@ export function useThemeContext(){
     const context=useContext(ThemeContext)
     if(!context){
         throw new Error ('Must provide a context')
-         return 
     }
     return context
 }
