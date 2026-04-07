@@ -1,6 +1,12 @@
 import { Library } from 'lucide-react'
 import React,{useState, useEffect} from 'react'
 
+type Posts={
+    userId:number,
+        id:number,
+    title:string,
+    body:string
+}
 const Fetch = () => {
     const [isLoading,setIsLoading]=useState(false)
     const [response,setResponse]=useState(null)
@@ -25,7 +31,10 @@ const Fetch = () => {
     <div>
         {isLoading && <p>Loading...</p>}
 {response!==null && <ul>
-{response.map((post)=><li key={post.id}>{post.title}</li>)}
+{response.map((post:Posts)=><li key={post.id}>
+    <span>Post Number:{post.id}</span><h3>
+   {post.title} </h3>
+   <p>{post.body}</p></li>)}
 </ul>}
     </div>
   )
