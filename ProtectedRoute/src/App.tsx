@@ -1,29 +1,48 @@
 import './App.css'
-import {Route} from 'react-router-dom'
-import  AuthRequired  from './AuthRequired';
+import AuthRequired from './AuthRequired';
 import {
-    RouterProvider, 
-    createBrowserRouter, 
-    createRoutesFromElements
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements, Route,
+  redirect
 } from 'react-router-dom'
-import Layout
- from "./Layout";
+import Layout from "./Layout";
 import NotFound from './NotFound';
- const router =createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
-<Route index element={<h1>Home Page</h1>}/>
-<Route element={<AuthRequired/>}>
-  <Route path='protected' element={<h1>Super secret info here</h1>}/>
-</Route>
-    <Route path='*' element={<NotFound/>}/>
+import { Heading1 } from 'lucide-react';
 
-    </Route>
- ))
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route path='/' element={<Layout />}>
+    <Route index
+      element={<h1>Home Page</h1>}
+      loader={
+        async () => {
+
+return null
+        }
+      } />
+          <Route path='protected'
+      element={<h1>Super sucrete goes here</h1>}
+      loader={
+        async () => {
+          const isLoggedIn=false
+          if(!isLoggedIn){
+          throw  redirect('/login')
+          }
+          return null}
+      }/ > 
+      
+     
+    
+      <Route path='/login' element={<h1>Login page goes here</h1>}/>
+
+
+  </Route>
+))
 function App() {
 
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
   )
 }
