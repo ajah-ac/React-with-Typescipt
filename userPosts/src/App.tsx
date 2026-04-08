@@ -4,7 +4,9 @@ import './App.css'
 
 function App() {
   const {status,data,error} = useUsers()
-
+if(!data){
+  return 'No data found'
+}
   return (
     <>
            {status === 'loading' && <p> Loading</p>}
