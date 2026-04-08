@@ -10,12 +10,11 @@ const Users = () => {
     }
   return (
     <select name='users'>
-        <option value=''  disabled >Choose a user </option>
+        <option value='' selected disabled >Choose a user </option>
 {users.map(user=><option key={user.id}
 value={user.id}
 > {user.name}</option>)}
     </select>
   )
 }
-
 export default Users
