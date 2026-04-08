@@ -6,7 +6,7 @@ type fetchStatus = 'loading' | 'success' | 'error'
     email: string
 }
 const useUsers = () => {
-    const [status, SetStatus] = useState<fetchStatus>('loading')
+    const [status, setStatus] = useState<fetchStatus>('loading')
     const [data, setData] = useState<[] | null>(null)
     const [error, setError] = useState<string | null>(null)
     useEffect(() => {
@@ -15,12 +15,16 @@ const useUsers = () => {
                 const resp = await fetch('https://jsonplaceholder.typicode.com/users')
                 const data = await resp.json()
                 setData(data)
-                SetStatus('success')
+                setStatus('success')
 
-            } catch (error) {
-                setError(error)
-                SetStatus('error')
-            }
+            }catch (error) {
+  if (error instanceof Error) {
+    setError(error.message)
+  } else {
+    setError("Something went wrong")
+  }
+  setStatus("error")
+}
         }
 
         fetchdatas()
