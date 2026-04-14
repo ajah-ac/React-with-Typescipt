@@ -1,0 +1,15 @@
+
+import './App.css'
+import {createBrowserRouter,RouterProvider,createRoutesFromElements,Route,useLoaderData} from 'react-router-dom'
+function App() {
+const router=createBrowserRouter(createRoutesFromElements(<Route>
+
+
+
+</Route>))
+  return (
+    <RouterProvider router={router}/>
+  )
+}
+
+export default App
